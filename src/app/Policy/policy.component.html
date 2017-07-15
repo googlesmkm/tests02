@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <h1 class="hide">CSP</h1>
+  <div>
+    <tabset #staticTabs>
+      <tab heading="Enabled ({{enabledPoliciesSize}})">
+        <div class="table-info clearfix">
+          <div class="total-policies pull-left">
+            {{enabledPoliciesSize}} Access policies
+          </div>
+          <div class="total-operation pull-right">
+            <a href="javascript:"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <!-- end .table-info -->
+        <app-csp-table [policiesList]="enabledPolicies" [tIndex]="'enabled'"></app-csp-table>
+      </tab>
+      <tab heading="Disabled ({{disabledPoliciesSize}})">
+        <div class="table-info clearfix">
+          <div class="total-policies pull-left">
+            {{disabledPoliciesSize}} Access policies
+          </div>
+          <div class="total-operation pull-right">
+            <a href="javascript:"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <!-- end .table-info -->
+        <app-csp-table [policiesList]="disabledPolicies" [tIndex]="'disabled'"></app-csp-table>
+      </tab>
+    </tabset>
+  </div>
+</div>

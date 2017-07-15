@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* color variable */
+$gray-1:#fbfbfb;
+$gray-2:#e9e9e9;
+$blue-1:#059cff;
+
+/* rewrite bootstrap style */
+.nav-tabs{
+  padding-top: 10px;
+  background-color: $gray-1;
+  padding-left: 12px;
+  > li > a{
+    border-radius: 0;
+    padding: 5px 15px;
+    border-top-width: 3px;
+  }
+  > li.active > a,
+  > li.active > a:hover,
+  > li.active > a:focus{
+    border-top: 3px solid $blue-1;
+  }
+}

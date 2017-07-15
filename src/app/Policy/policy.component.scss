@@ -1,0 +1,20 @@
+$black-1: #000000;
+$blue-1:#059cff;
+
+/* .wrapper */
+.wrapper{
+  width: 1165px;
+  margin: 0 auto;
+  padding: 6px 0;
+}
+
+/* .table-info */
+.table-info{
+  padding: 16px 10px 10px;
+  a{
+    color: $black-1;
+    &:hover{
+      color: $blue-1;
+    }
+  }
+}

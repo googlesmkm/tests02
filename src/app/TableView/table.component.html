@@ -1,0 +1,98 @@
+<div class="table-wrapper">
+  <div class="table-header-fixed">
+    <ul class="table-row">
+      <li class="col-1">Order</li>
+      <li class="col-2">Group</li>
+      <li class="col-3">Protocols and User Agents</li>
+      <li class="col-4">URL Filtering</li>
+      <li class="col-5">Applications</li>
+      <li class="col-6">Objects</li>
+      <li class="col-7">Anti-Malware and Reputation</li>
+      <li class="col-8">&nbsp;</li>
+    </ul>
+  </div>
+  <!-- end .table-header-fixed -->
+
+  <div class="table-body-fixed" [dragula]='"table-bag-"+tIndex' [dragulaModel]='policiesList' [dragulaOptions]="options">
+    <div class="table-row" *ngFor="let policy of policiesList">
+      <div class="ceil col-1 first-ceil">
+        <div class="handle">
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </div>
+        <div class="order">{{policy.order}}</div>
+      </div>
+      <!-- end .ceil -->
+
+      <div class="ceil col-2">
+        <div class="name"><b>{{policy.name}}</b></div>
+        <p class="description">Description: {{policy.description}}</p>
+      </div>
+      <!-- end .ceil -->
+
+      <div class="ceil col-3">
+        <div *ngIf="policy.protocolsUserAgents.global">
+          <p>Global Policy</p>
+        </div>
+        <div class="!policy.protocolsUserAgents.global">
+          <p *ngIf="policy.protocolsUserAgents.block">{{policy.protocolsUserAgents.block}} Blocked</p>
+          <p *ngIf="policy.protocolsUserAgents.monitor">{{policy.protocolsUserAgents.monitor}} Monitoring</p>
+        </div>
+      </div>
+      <!-- end .ceil -->
+
+      <div class="ceil col-4">
+        <div *ngIf="policy.urlFiltering.global">
+          <p>Global Policy</p>
+        </div>
+        <div class="!policy.urlFiltering.global">
+          <p *ngIf="policy.urlFiltering.block">{{policy.urlFiltering.block}} Blocked</p>
+          <p *ngIf="policy.urlFiltering.monitor">{{policy.urlFiltering.monitor}} Monitoring</p>
+        </div>
+      </div>
+      <!-- end .ceil -->
+
+      <div class="ceil col-5">
+        <div *ngIf="policy.applications.global">
+          <p>Global Policy</p>
+        </div>
+        <div class="!policy.applications.global">
+          <p *ngIf="policy.applications.block">{{policy.applications.block}} Blocked</p>
+          <p *ngIf="policy.applications.monitor">{{policy.applications.monitor}} Monitoring</p>
+        </div>
+      </div>
+      <!-- end .ceil -->
+
+      <div class="ceil col-6">
+        <div *ngIf="policy.objects.global">
+          <p>Global Policy</p>
+        </div>
+        <div class="!policy.objects.global">
+          <p *ngIf="policy.objects.block">{{policy.objects.block}} Blocked</p>
+          <p *ngIf="policy.objects.monitor">{{policy.objects.monitor}} Monitoring</p>
+        </div>
+      </div>
+      <!-- end .ceil -->
+
+      <div class="ceil col-7">
+        <div class="ceil-list">
+          <p *ngIf="policy.antiMalwareAndReputation.webReputation" [style.color]="policy.antiMalwareAndReputation.webReputation.color" >{{policy.antiMalwareAndReputation.webReputation.status}} - WebReputation</p>
+          <p *ngIf="policy.antiMalwareAndReputation.antiMalwareScanning" [style.color]="policy.antiMalwareAndReputation.antiMalwareScanning.color" >{{policy.antiMalwareAndReputation.antiMalwareScanning.status}} - Advanced Malware Protection</p>
+          <p *ngIf="policy.antiMalwareAndReputation.advancedMalwareProtection" [style.color]="policy.antiMalwareAndReputation.advancedMalwareProtection.color" >{{policy.antiMalwareAndReputation.advancedMalwareProtection.status}} - Anti-Malware Scanning</p>
+        </div>
+      </div>
+      <!-- end .ceil -->
+
+      <div class="ceil col-8 ceil-control">
+        <div class="control-list">
+          <a href="javascript:"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="javascript:"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <!-- end .ceil -->
+    </div>
+    <!-- end .table-row -->
+  </div>
+  <!-- end .table-body-fixed -->
+</div>
+
+

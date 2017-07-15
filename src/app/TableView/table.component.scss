@@ -1,0 +1,215 @@
+/* table component style */
+$gray-1:#d2d2d2;
+$gray-2:#e9e9e9;
+$gray-3:#e8eaf0;
+
+$white-1: #ffffff;
+$white-2: #fbfbfb;
+
+$black-1: #000000;
+
+$blue-1:#059cff;
+$blue-2:#15a4da;
+
+.col-1{
+  width: 40px;
+}
+.col-2{
+  width: 172px;
+}
+.col-3{
+  width: 142px;
+}
+.col-4{
+  width: 160px;
+}
+.col-5{
+  width: 160px;
+}
+.col-6{
+  width: 147px;
+}
+.col-7{
+  flex: 1;
+}
+.col-8{
+  width: 56px;
+}
+
+.table-wrapper{
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
+}
+
+/* .table-header-fixed */
+.table-header-fixed{
+  height: 48px;
+  > ul.table-row{
+    width: 100%;
+    display: flex;
+    background-color: $gray-2;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    >li{
+      padding: 10px;
+      vertical-align: top;
+      line-height: 16px;
+      font-size: 12px;
+      height: 48px;
+      list-style: none;
+    }
+  }
+}
+
+/* .table-body-fixed */
+.table-body-fixed {
+  max-height: 420px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* .table-row: because we need use ng2-dragula, we need nake it as a global style */
+  .table-row{
+    width: 100%;
+    display: flex;
+    .ceil{
+      padding: 10px;
+      font-size: 12px;
+      border-bottom: 1px solid $gray-1;
+      border-left: 1px solid $gray-1;
+      .name{
+        padding-bottom: 4px;
+      }
+      p{
+        margin: 0;
+        &.description{
+          font-size: 12px;
+          line-height: 14px;
+        }
+      }
+      &.first-ceil{
+        border-left: 0;
+        border-bottom: 0;
+        padding: 15px 0 10px;
+        position: relative;
+        text-align: center;
+        .handle{
+          width: 12px;
+          text-align: center;
+          font-size: 16px;
+          cursor: move;
+          position: absolute;
+          top: 15px;
+          left: 0;
+          display: none;
+          z-index:999;
+          .fa{
+            font-size: 24px;
+          }
+        }
+        .order{
+          width: 22px;
+          height: 20px;
+          border: 1px solid $gray-1;
+          border-radius: 4px;
+          text-align: center;
+          line-height: 18px;
+          font-size: 12px;
+          margin-left: 13px;
+          position: relative;
+          z-index:2;
+          background-color: $white-1;
+        }
+        &:after{
+          display: block;
+          content: '';
+          position: absolute;
+          width: 2px;
+          top: 0;
+          bottom: 0;
+          left: 24px;
+          background-color: $gray-1;
+        }
+      }
+      &.ceil-control{
+        padding: 30px 4px 10px;
+        text-align: center;
+        border-left: 0;
+        .control-list{
+          display: none;
+          >a{
+            margin: 0 3px;
+            color: $black-1;
+            &:hover{
+              color: $blue-1;
+            }
+            .fa{
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    &:nth-child(2n){
+      .ceil{
+        background-color: $white-2;
+        &.first-ceil{
+          background-color: $white-1;
+        }
+      }
+    }
+    &:hover{
+      .ceil{
+        background-color: $gray-3;
+        &.first-ceil{
+          background-color: $white-1;
+          .handle{
+            display: block;
+          }
+        }
+      }
+      .ceil-control .control-list{
+        display: block;
+      }
+    }
+    &:first-child{
+      .ceil.first-ceil:after{
+        top: 18px;
+      }
+    }
+    &:last-child{
+      .ceil.first-ceil:after{
+        bottom: auto;
+        height: 20px;
+      }
+    }
+  }
+
+/* drag style rewrite */
+.gu-mirror{
+  .ceil{
+    border-top: 1px solid $gray-1;
+    background-color: $gray-3;
+    &.first-ceil{
+      border-top: 0;
+      background-color: transparent;
+      .handle{
+        display: block;
+      }
+      &:after{
+        display: none;
+      }
+    }
+  }
+}
+.gu-transit{
+  .ceil.first-ceil .handle{
+    display: block;
+  }
+  .ceil.ceil-control .control-list{
+    display: block;
+  }
+  .ceil.first-ceil:after{
+    background-color: $black-1;
+  }
+}
